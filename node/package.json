@@ -1,0 +1,23 @@
+{
+  "name": "krishna",
+  "version": "1.0.0",
+  "description": "nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node index"
+  },
+  "dependencies": {
+    "@asymmetrik/node-fhir-server-core": "^2.2.4",
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "jasmine-node": "^3.0.0",
+    "jest": "^29.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.19",
+    "passport-http": "^0.3.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
+  }
+}
