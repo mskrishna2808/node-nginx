@@ -37,13 +37,13 @@ jobs:
           registry: mskrishna123.jfrog.io
           username: ${{ secrets.JF_USER }}
           password: ${{ secrets.JF_ACCESS_TOKEN }}
-          
+
       - name: Creating images
         run: |
             NODE_IMAGE_ID=$(docker images --filter=reference='actions-node:latest' -q)
             docker tag $NODE_IMAGE_ID mskrishna123.jfrog.io/default-docker:v1
             # docker push mskrishna123.jfrog.io/default-docker:v1
-            docker rmi -f $(docker images -f "dangling=true" -q)
+            # docker rmi -f $(docker images -f "dangling=true" -q)
 
       - name: Push images to Jfrog
         id: docker_build
