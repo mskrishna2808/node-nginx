@@ -2,6 +2,12 @@ name: Docker Container Creation
 
 on: [push]
 
+env:
+  jf_url: ${{ secrets.JF_URL }}
+  jf_user: ${{ secrets.JF_USER }}
+  jf_access_token: ${{ secrets.JF_ACCESS_TOKEN }}
+
+
 jobs:
   creating-docker-cntainer:
     runs-on: self-hosted
@@ -36,7 +42,7 @@ jobs:
       #     password: ${{ secrets.JF_ACCESS_TOKEN }}
       - name: Pushing the image to jfrog
         run: |
-          docker login -u ${{ inputs.JF_USER }} ${{ inputs.JF_URL }} -p ${{ inputs.JF_ACCESS_TOKEN }}
+          docker login -u ${{ inputs.jf_user }} ${{ inputs.jf_url }} -p ${{ inputs.jf_access_token }}
           NODE_IMAGE_ID=$(docker images --filter=reference='actions-node:latest' -q)
           docker tag $NODE_IMAGE_ID mskrishna123.jfrog.io/default-docker:v1
           docker push mskrishna123.jfrog.io/default-docker:v1
