@@ -36,7 +36,7 @@ jobs:
       #     password: ${{ secrets.JF_ACCESS_TOKEN }}
       - name: Pushing the image to jfrog
         run: |
-          docker login -u ${{ inputs.JF_USER }} ${{ inputs.JF_URL }} ${{ inputs.JF_ACCESS_TOKEN }}
+          docker login -u ${{ inputs.JF_USER }} ${{ inputs.JF_URL }} -p ${{ inputs.JF_ACCESS_TOKEN }}
           NODE_IMAGE_ID=$(docker images --filter=reference='actions-node:latest' -q)
           docker tag $NODE_IMAGE_ID mskrishna123.jfrog.io/default-docker:v1
           docker push mskrishna123.jfrog.io/default-docker:v1
