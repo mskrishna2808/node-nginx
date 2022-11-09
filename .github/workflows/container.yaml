@@ -17,17 +17,12 @@ jobs:
           docker-compose build
           docker-compose up -d
 
-      - name: logging into Jfrog
-        uses: jfrog/setup-jfrog-cli@v3
-        env:
-          # JFrog platform url (for example: https://acme.jfrog.io) 
-          JF_URL: ${{ secrets.JF_URL }}
-
-          # Basic authentication credentials
-          JF_USER: ${{ secrets.JF_USER }}
-
-          # JFrog Platform access token
-          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+      - name: Login to JFrog
+        uses: docker/login-action@v1
+        with:
+          registry: mskrishna123.jfrog.io
+          username: ${{ secrets.JF_USER }}
+          password: ${{ secrets.JF_ACCESS_TOKEN }}
       - name: Pushing the image to jfrog
         run: |
           NODE_IMAGE_ID=$(docker images --filter=reference='actions-node:latest' -q)
