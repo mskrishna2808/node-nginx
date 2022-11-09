@@ -1,0 +1,18 @@
+name: Docker Container Creation
+
+on: [push]
+
+jobs:
+  creating-docker-cntainer:
+    runs-on: self-hosted
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v2
+      - name: configuring node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: creating docker containers
+        run: |
+          docker-compose build
+          docker-compose up

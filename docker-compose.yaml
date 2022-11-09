@@ -1,0 +1,18 @@
+version: "3.5"
+services: 
+  github-actions-node:
+    image: actions-node
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+  github-actions-nginx:
+    image: actions-nginx
+    build:
+      context: ./nginx/
+      dockerfile: ./Dockerfile
+    ports:
+      - 80:80
+    links:
+      - github-actions-node
