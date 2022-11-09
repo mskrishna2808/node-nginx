@@ -16,7 +16,7 @@ jobs:
         run: |
           docker-compose build
           docker-compose up -d
-      - name: pushing image to jfrog
+
       - uses: jfrog/setup-jfrog-cli@v3
         env:
           # JFrog platform url (for example: https://acme.jfrog.io) 
@@ -28,7 +28,8 @@ jobs:
           # JFrog Platform access token
           JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
         run: |
-          NODE_IMAGE_ID=docker images --filter=reference='actions-node:latest'
+          
+          NODE_IMAGE_ID=$(docker images --filter=reference='actions-node:latest' -q)
           docker tag $NODE_IMAGE_ID mskrishna123.jfrog.io/default-docker/docker-node:v1
           docker push mskrishna123.jfrog.io/default-docker/docker-node:v1
           docker rmi -f $(docker images -f "dangling=true" -q)
