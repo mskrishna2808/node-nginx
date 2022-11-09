@@ -27,7 +27,8 @@ jobs:
 
           # JFrog Platform access token
           JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
-      - run: |
+      - name: Pushing images to jfrog
+        run: |
           NODE_IMAGE_ID=docker images --filter=reference='actions-node:latest'
           docker tag $NODE_IMAGE_ID mskrishna123.jfrog.io/default-docker/docker-node:v1
           docker push mskrishna123.jfrog.io/default-docker/docker-node:v1
