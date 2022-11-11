@@ -12,4 +12,4 @@
 
 FROM nginx:latest
 
-RUN echo "Welcome to DevOps world" >> /usr/share/nginx/html/index.html
+RUN echo "Welcome to world of miracles" >> /usr/share/nginx/html/index.html
