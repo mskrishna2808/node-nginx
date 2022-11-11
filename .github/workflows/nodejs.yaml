@@ -44,4 +44,4 @@ jobs:
         with:
           context: docker-images/nodejs
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          tags: ${{ env.REGISTRY }}/docker-node/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
