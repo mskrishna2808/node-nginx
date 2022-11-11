@@ -47,6 +47,7 @@ jobs:
           push: true
           tags: mskrishna123.jfrog.io/docker-node/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
       - name: pushing image to container
+        run: |
           set -e
           ECR_IMAGE=mskrishna123.jfrog.io/docker-node/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "ecs-app-task" --region "us-east-1")
