@@ -47,9 +47,18 @@ jobs:
           push: true
           tags: mskrishna123.jfrog.io/docker-node/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
 
-      - name: creating container from docker images
+      # - name: creating container from docker images
+      #   run: |
+      #     docker run -itd -p 80:80 mskrishna123.jfrog.io/docker-node/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+      - name: pushing image to container
         run: |
-          docker run -itd -p 80:80 mskrishna123.jfrog.io/docker-node/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          set -e
+          ECR_IMAGE=mskrishna123.jfrog.io/docker-node/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "ecs-app-task" --region "us-east-1")
+          NEW_TASK_DEFINTIION=$(echo $TASK_DEFINITION | jq --arg IMAGE "$ECR_IMAGE" '.taskDefinition | .containerDefinitions[0].image = $IMAGE | del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities)')
+          NEW_TASK_INFO=$(aws ecs register-task-definition --region "us-east-1" --cli-input-json "$NEW_TASK_DEFINTIION")
+          NEW_REVISION=$(echo $NEW_TASK_INFO | jq '.taskDefinition.revision')
+          aws ecs update-service --cluster ecs-cluster --service ecs-service --task-definition ecs-app-task:${NEW_REVISION}
 
 
 # Pushing docker images into AWS ECR
