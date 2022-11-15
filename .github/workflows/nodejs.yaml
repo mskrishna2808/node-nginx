@@ -14,12 +14,16 @@ env:
 jobs:
   creating-docker-image:
     runs-on: self-hosted
+    defaults:
+      run:
+        shell: bash
     steps:
         - name: build
           uses: ./.github/actions/build
           with:
             IMAGE_NAME: nginx
             IMAGE_TAG: 1.0.${{ github.run_number }}
+
 #       - name: git checkout
 #         uses: actions/checkout@v3
       
