@@ -20,12 +20,15 @@ jobs:
     steps:
         - name: git checkout
           uses: actions/checkout@v3
-          
+
         - name: build
           uses: ./.github/actions/build
           with:
             IMAGE_NAME: nginx
             IMAGE_TAG: 1.0.${{ github.run_number }}
+            username: ${{ secrets.JF_USER }}
+            password: ${{ secrets.JF_ACCESS_TOKEN }}
+
 
 #       - name: git checkout
 #         uses: actions/checkout@v3
