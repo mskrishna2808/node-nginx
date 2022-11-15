@@ -8,7 +8,7 @@ WORKDIR /node-nginx
 RUN pwd
 RUN ls -la
 
-ADD node-nginx/* .
+ADD ../../* .
 
 RUN pwd
 RUN ls -la
