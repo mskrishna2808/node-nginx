@@ -7,7 +7,7 @@ WORKDIR /node-nginx
 
 RUN ls -la
 
-COPY /home/ec2-user/actions-runner/_work/node-nginx/node-nginx/* .
+COPY ../../. .
 
 RUN ls -la
 
