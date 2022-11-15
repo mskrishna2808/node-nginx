@@ -3,15 +3,15 @@ services:
   github-actions-node:
     image: actions-node
     build:
-      context: docker-images/nodejs
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: docker-images/nodejs/Dockerfile
     ports:
       - 3000:3000
   github-actions-nginx:
     image: actions-nginx
     build:
       context: docker-images/nginx
-      dockerfile: ./Dockerfile
+      dockerfile: Dockerfile
     ports:
       - 80:80
     links:
