@@ -12,6 +12,13 @@ jobs:
         - name: git checkout
           uses: actions/checkout@v3
 
+        - name: pwd & ls
+          run: |
+            echo "Pwd"
+            pwd
+            echo "List contents"
+            ls -la
+
         - name: docker build
           run: docker-compose build
 
