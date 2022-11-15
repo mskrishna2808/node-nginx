@@ -10,7 +10,7 @@ WORKDIR node-nginx/
 RUN ls -la
 RUN pwd
 
-COPY . node-nginx/
+COPY . node-nginx/*
 
 RUN ls -la
 RUN pwd
