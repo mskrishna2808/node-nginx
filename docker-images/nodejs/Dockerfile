@@ -6,10 +6,12 @@ FROM node:16.17.1
 WORKDIR /node-nginx
 
 RUN pwd
+RUN ls -la
 
-COPY ./../../* ./
+COPY ../../* ./
 
 RUN pwd
+RUN ls -la
 
 RUN npm install
 
