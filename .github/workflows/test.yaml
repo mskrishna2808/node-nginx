@@ -22,3 +22,10 @@ jobs:
         - name: docker build
           run: docker-compose build
 
+        - name: build and push
+          uses: docker/build-push-action@v3
+          with:
+            context: .
+            dockerfile: docker-images/nodejs/Dockerfile
+            push: false
+
