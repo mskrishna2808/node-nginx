@@ -7,7 +7,7 @@ WORKDIR /node-nginx
 
 RUN ls -la
 
-COPY . .
+COPY ../node-nginx .
 
 RUN ls -la
 
