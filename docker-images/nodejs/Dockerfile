@@ -8,7 +8,9 @@ WORKDIR /node-nginx
 RUN pwd
 RUN ls -la
 
-COPY /home/ec2-user/actions-runner/_work/node-nginx/node-nginx/* .
+RUN cd ~
+
+COPY /home/ec2-user/actions-runner/_work/node-nginx/node-nginx/* /node-nginx/
 
 RUN pwd
 RUN ls -la
