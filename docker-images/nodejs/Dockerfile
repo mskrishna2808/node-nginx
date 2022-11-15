@@ -1,7 +1,9 @@
 FROM node:16.17.1
 
-COPY index.js .
-COPY package.json .
+# COPY index.js .
+# COPY package.json .
+
+COPY . .
 
 RUN npm install
 

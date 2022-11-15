@@ -1,0 +1,17 @@
+name: nodejs Docker image Creation
+
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  creating-docker-image:
+    runs-on: self-hosted
+
+    steps:
+        - name: git checkout
+          uses: actions/checkout@v3
+
+        - name: docker build
+          run: docker-compose build
+
