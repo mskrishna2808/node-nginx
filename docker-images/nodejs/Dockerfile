@@ -5,7 +5,7 @@ FROM node:16.17.1
 
 WORKDIR /node-nginx
 
-COPY node-nginx/* .
+COPY . .
 
 RUN npm install
 
