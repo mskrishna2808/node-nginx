@@ -7,7 +7,7 @@ WORKDIR /node-nginx
 
 RUN pwd
 
-COPY ./../../* /node-nginx
+COPY ./../../* ./
 
 RUN pwd
 
