@@ -3,7 +3,7 @@ FROM node:16.17.1
 # COPY index.js .
 # COPY package.json .
 
-WORKDIR node-nginx/
+WORKDIR /node-nginx
 
 COPY node-nginx/* .
 
