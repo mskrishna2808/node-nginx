@@ -4,7 +4,7 @@ FROM node:16.17.1
 # COPY package.json .
 WORKDIR node-nginx/
 
-COPY . .
+COPY . node-nginx/
 
 RUN npm install
 
