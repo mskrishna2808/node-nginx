@@ -26,7 +26,8 @@ jobs:
           with:
             context: .
             build-args: |
-              "NGINX_TAG_VERSION=v2"
+              "NGINX_TAG_VERSION=v1"
             file: docker-images/nodejs/Dockerfile
-            push: false
+            push: true
+            tags: v2
         
