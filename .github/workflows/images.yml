@@ -1,0 +1,32 @@
+name: Docker image Creation
+
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  creating-docker-image:
+    runs-on: self-hosted
+
+    steps:
+        - name: git checkout
+          uses: actions/checkout@v3
+
+        - name: Set up Docker Buildx
+          uses: docker/setup-buildx-action@v1
+
+        - name: Login to Docker Hub
+          uses: docker/login-action@v2
+          with:
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_TOKEN }}        
+
+        - name: build and push
+          uses: docker/build-push-action@v3
+          with:
+            context: .
+            build-args: |
+              "NGINX_TAG_VERSION=v2"
+            file: docker-images/nodejs/Dockerfile
+            push: false
+        
